@@ -1,20 +1,20 @@
 <template>
   <div class="home">
     <vCarousel />
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <vBenefits/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import vCarousel from '@/components/v-carousel.vue'
+import vBenefits from '@/components/v-benefits.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
-    vCarousel
+    vCarousel,
+    vBenefits
   }
 }
 </script>
