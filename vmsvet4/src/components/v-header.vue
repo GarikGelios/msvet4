@@ -23,7 +23,7 @@ export default {
   data () {
     return {
       mainHeading: 'Много света',
-      mainHeading2: 'Световое оборудование'
+      mainHeading2: 'Новогодняя иллюминация'
     }
   }
 }
@@ -48,7 +48,7 @@ export default {
         text-decoration: none;
         color: $color-secondary;
         text-transform: uppercase;
-        font-size: $font * 2;
+        font-size: $font / 4 * 9;
         span {
           color: $color-third;
           font-size: $font;

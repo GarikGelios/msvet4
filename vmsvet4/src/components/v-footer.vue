@@ -1,96 +1,38 @@
 <template>
   <footer class="v-footer">
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-          target="_blank"
-          rel="noopener"
-          >babel</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          rel="noopener"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex"
-          target="_blank"
-          rel="noopener"
-          >vuex</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          rel="noopener"
-          >eslint</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
-        >
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
-        >
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-          rel="noopener"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+    <div class="v-footer_wrapper">
+      <div class="v-footer_wrapper_adress">
+        <h4>Наши Контакты</h4>
+        <p>
+          Телефон: <span><a href="tel: +80447692165">8 044 769-21-65</a></span>
+        </p>
+        <p>
+          email: <span><a href="mailto:boss@msvet.by">boss@msvet.by</a></span>
+        </p>
+        <p>
+          Адрес:
+          <span
+            >223060, Минская область, Минский р-н Новодворский с/с, д. Большой
+            Тростенец, ул. Зеленая, 1а - 13а д, Большой Тростенец 223060</span
+          >
+        </p>
+      </div>
+      <div class="v-footer_wrapper_links">
+        <h4>Ссылки</h4>
+        <p>
+          <span><a href="msvet.by">msvet.by</a></span>
+        </p>
+        <p>
+          <span><a href="vk.com">Вконтакте</a></span>
+        </p>
+        <p>
+          <span><a href="ok.ru">Однокласники</a></span>
+        </p>
+        <p>
+          <span><a href="instagram.com">Instagram</a></span>
+        </p>
+      </div>
+    </div>
   </footer>
 </template>
 
@@ -101,18 +43,38 @@ export default {
 </script>
 
 <style lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.v-footer {
+  background-color: $color-dark;
+  &_wrapper {
+    max-width: $screenwidth * 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    &_adress,
+    &_links {
+      max-width: $screenwidth / 2;
+      padding: $padding;
+      box-sizing: border-box;
+      h4 {
+        text-transform: uppercase;
+        color: $color-light;
+        text-align: left;
+      }
+      p {
+        text-align: left;
+        color: $color-secondary;
+        font-weight: 700;
+        border-bottom: .5px dotted $color-secondary;
+        span {
+          font-weight: 400;
+        }
+        a {
+          color: $color-secondary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 </style>
