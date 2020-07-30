@@ -12,7 +12,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    windowSize: '' // размер экрана
+    windowSize: '', // размер экрана
+    spreadsheetsProducts: [],
+    products: [],
+    spreadsheetsBanners: [],
+    banners: []
   },
   mutations,
   actions,
