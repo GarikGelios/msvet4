@@ -38,8 +38,10 @@ export default {
     width: 100%;
     max-width: $screenwidth * 2;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     h1 {
+      margin: auto;
       a {
         display: flex;
         flex-direction: column;
@@ -65,6 +67,7 @@ export default {
         font-weight: bold;
         font-size: $font;
         color: #2c3e50;
+        padding: 0 $padding;
         text-decoration: none;
         text-transform: uppercase;
         color: $color-secondary;
