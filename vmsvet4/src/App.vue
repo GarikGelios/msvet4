@@ -28,33 +28,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'GET_WINDOW_TYPE',
-      'GET_SPREADSHEETS_PRODUCTS',
-      'GET_SPREADSHEETS_BANNERS',
-      ''
-    ])
+    ...mapGetters(['GET_WINDOW_TYPE'])
   },
   methods: {
-    ...mapActions([
-      'ACT_WINDOW_SIZE',
-      'ACT_SPREADSHEETS_BANNERS_FROM_API',
-      'ACT_PROCESSED_SPREADSHEETS_BANNERS_TO_STORE'
-    ]),
-    adaptBanners () {
-      const gsx = this.GET_SPREADSHEETS_BANNERS.feed.entry
-      const arr = gsx.map((obj, index) => {
-        return {
-          id: index,
-          published: obj.gsx$published.$t,
-          title: obj.gsx$title.$t,
-          description: obj.gsx$description.$t,
-          img: obj.gsx$img.$t.split('/view?')[0].split('d/')[1],
-          link: obj.gsx$link.$t
-        }
-      })
-      this.ACT_PROCESSED_SPREADSHEETS_BANNERS_TO_STORE(arr)
-    }
+    ...mapActions(['ACT_WINDOW_SIZE'])
   },
   mounted () {
     const vm = this // для общего контекста, чтобы использовать его внутри функций
@@ -82,16 +59,6 @@ export default {
     window.addEventListener('resize', function () {
       // запускаем всегда слушать изменения размера окна
       listenWindowSize()
-    })
-    this.ACT_SPREADSHEETS_BANNERS_FROM_API().then(response => {
-      if (response.data) {
-        console.log(
-          '%c%s',
-          'background-color: #000000; color: #497e04; font: 1rem/1 Tahoma; padding: 1px 5px',
-          'Banners from the DataBase loaded!'
-        )
-        this.adaptBanners() // и тут же превращаем в красивый массив
-      }
     })
   }
 }
