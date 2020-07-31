@@ -114,6 +114,7 @@ export default {
       display: none;
     }
     label {
+      display: inline-block;
       padding: $padding;
       cursor: pointer;
       &.checked {
@@ -130,6 +131,7 @@ export default {
     div {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-around;
     }
   }
 }
