@@ -31,32 +31,16 @@ export default {
     ...mapGetters([
       'GET_WINDOW_TYPE',
       'GET_SPREADSHEETS_PRODUCTS',
-      'GET_SPREADSHEETS_BANNERS'
+      'GET_SPREADSHEETS_BANNERS',
+      ''
     ])
   },
   methods: {
     ...mapActions([
       'ACT_WINDOW_SIZE',
-      'ACT_SPREADSHEETS_PRODUCTS_FROM_API',
-      'ACT_PROCESSED_SPREADSHEETS_PRODUCTS_TO_STORE',
       'ACT_SPREADSHEETS_BANNERS_FROM_API',
       'ACT_PROCESSED_SPREADSHEETS_BANNERS_TO_STORE'
     ]),
-    adaptProducts () {
-      const gsx = this.GET_SPREADSHEETS_PRODUCTS.feed.entry
-      const arr = gsx.map((obj, index) => {
-        return {
-          id: index,
-          published: obj.gsx$published.$t,
-          category: obj.gsx$category.$t,
-          title: obj.gsx$title.$t,
-          description: obj.gsx$description.$t,
-          price: obj.gsx$price.$t,
-          img: obj.gsx$imglink.$t.split('/view?')[0].split('d/')[1]
-        }
-      })
-      this.ACT_PROCESSED_SPREADSHEETS_PRODUCTS_TO_STORE(arr)
-    },
     adaptBanners () {
       const gsx = this.GET_SPREADSHEETS_BANNERS.feed.entry
       const arr = gsx.map((obj, index) => {
@@ -99,17 +83,6 @@ export default {
       // запускаем всегда слушать изменения размера окна
       listenWindowSize()
     })
-    this.ACT_SPREADSHEETS_PRODUCTS_FROM_API() // как только компонент загружен, сразу вызываем api запрос на получение json из Google Таблиц
-      .then(response => {
-        if (response.data) {
-          console.log(
-            '%c%s',
-            'background-color: #000000; color: #497e04; font: 1rem/1 Tahoma; padding: 1px 5px',
-            'Product from the DataBase loaded!'
-          )
-          this.adaptProducts() // и тут же превращаем в красивый массив
-        }
-      })
     this.ACT_SPREADSHEETS_BANNERS_FROM_API().then(response => {
       if (response.data) {
         console.log(

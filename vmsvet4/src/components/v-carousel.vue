@@ -66,6 +66,7 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #3f7900;
+  min-height: $screenwidth / 4;
   .slide {
     display: block;
     transition: all 1s ease-out;

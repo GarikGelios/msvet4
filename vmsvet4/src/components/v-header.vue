@@ -7,11 +7,22 @@
         </router-link>
       </h1>
       <nav>
-        <router-link to="/">Главная <span>Здравству друг!</span></router-link>
-        <router-link to="/about">Каталог <span>Самое лучшее</span></router-link>
-        <router-link to="/about"
-          >Контакты <span>Напишите нам</span></router-link
-        >
+        <router-link to="/"
+          >Главная <span>Здравству друг!</span>
+          <svg>
+            <use xlink:href="@/assets/sprite.svg#home" />
+          </svg>
+        </router-link>
+        <router-link to="/catalog"
+          >Каталог <span>Самое лучшее</span>
+          <svg>
+            <use xlink:href="@/assets/sprite.svg#led" /></svg
+        ></router-link>
+        <router-link to="/contacts"
+          >Контакты <span>Напишите нам</span>
+          <svg>
+            <use xlink:href="@/assets/sprite.svg#mail" /></svg
+        ></router-link>
       </nav>
     </div>
   </header>
@@ -75,14 +86,24 @@ export default {
           color: $color-third;
           font-size: $font / 4 * 3;
         }
+        svg {
+          height: 30px;
+          fill: $color-secondary;
+          max-width: 40px;
+          margin: auto;
+          padding-top: $padding * 2;
+        }
+        &.router-link-exact-active {
+          color: $color-primary;
+        }
         &:hover {
           color: $color-primary;
           span {
             color: $color-light;
           }
-        }
-        &.router-link-exact-active {
-          color: $color-primary;
+          svg {
+            fill: $color-light;
+          }
         }
       }
     }

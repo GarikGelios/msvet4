@@ -59,6 +59,7 @@ export default {
   &_item {
     max-width: $screenwidth / 2;
     padding: $padding;
+    margin: 0 auto;
     box-sizing: border-box;
     &_heading {
       display: flex;

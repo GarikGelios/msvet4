@@ -54,7 +54,7 @@ export default {
     &_adress,
     &_links {
       max-width: $screenwidth / 2;
-      padding: $padding;
+      padding: $padding * 2;
       box-sizing: border-box;
       h4 {
         text-transform: uppercase;

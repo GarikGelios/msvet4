@@ -7,5 +7,8 @@ export default {
   },
   ACT_PROCESSED_SPREADSHEETS_BANNERS_TO_STORE ({ commit }, arr) {
     commit('MUT_PROCESSED_SPREADSHEETS_BANNERS_TO_STORE', arr)
+  },
+  ACT_SORTED_PRODUCTS ({ commit }, arr) {
+    commit('MUT_SORTED_PRODUCTS', arr)
   }
 }

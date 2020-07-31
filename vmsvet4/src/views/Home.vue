@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <vCarousel />
-    <vBenefits/>
+    <vBenefits />
+    <vWelcome />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 // @ is an alias to /src
 import vCarousel from '@/components/v-carousel.vue'
 import vBenefits from '@/components/v-benefits.vue'
+import vWelcome from '@/components/v-welcome.vue'
 
 export default {
   name: 'Home',
   components: {
     vCarousel,
-    vBenefits
+    vBenefits,
+    vWelcome
   }
 }
 </script>
