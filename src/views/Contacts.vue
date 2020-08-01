@@ -17,7 +17,9 @@
         />
       </div>
       <div>
-        <label for="form_name" v-if="this.GET_WINDOW_TYPE !== 'Extra small'">Ваше имя:</label>
+        <label for="form_name" v-if="this.GET_WINDOW_TYPE !== 'Extra small'"
+          >Ваше имя:</label
+        >
         <input
           type="text"
           placeholder="Александр"
@@ -27,7 +29,9 @@
         />
       </div>
       <div>
-        <label for="form_city" v-if="this.GET_WINDOW_TYPE !== 'Extra small'">Ваш Телефон:</label>
+        <label for="form_city" v-if="this.GET_WINDOW_TYPE !== 'Extra small'"
+          >Ваш Телефон:</label
+        >
         <input
           type="tel"
           placeholder="8 044 769-21-65"
@@ -38,7 +42,9 @@
         />
       </div>
       <div>
-        <label for="form_email" v-if="this.GET_WINDOW_TYPE !== 'Extra small'">Ваша почта:</label>
+        <label for="form_email" v-if="this.GET_WINDOW_TYPE !== 'Extra small'"
+          >Ваша почта:</label
+        >
         <input
           type="email"
           placeholder="boss@msvet.by"
@@ -49,7 +55,9 @@
         />
       </div>
       <div>
-        <label for="form_message" v-if="this.GET_WINDOW_TYPE !== 'Extra small'">Ваше сообщение:</label>
+        <label for="form_message" v-if="this.GET_WINDOW_TYPE !== 'Extra small'"
+          >Ваше сообщение:</label
+        >
         <textarea
           rows="50"
           name="message"
@@ -66,7 +74,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -94,17 +102,17 @@ export default {
   },
   methods: {
     submit () {
-      this.$router.push('/')
-      console.log(this.dataForm)
-      //   const vm = this
-      //   axios
-      //     .post('/', this.dataForm)
-      //     .then(function (response) {
-      //       if (response.status === 200) {
-      //         vm.$router.push('/')
-      //       }
-      //     })
-      //     .catch(error => console.log(error))
+      // this.$router.push('/')
+      // console.log(this.dataForm)
+      const vm = this
+      axios
+        .post('/', this.dataForm)
+        .then(function (response) {
+          if (response.status === 200) {
+            vm.$router.push('/')
+          }
+        })
+        .catch(error => console.log(error))
     }
   }
 }
@@ -149,20 +157,20 @@ export default {
       }
       textarea {
         flex-grow: 2;
-        min-height: $screenwidth / 6 ;
+        min-height: $screenwidth / 6;
       }
     }
     &_buttons {
       display: flex;
       justify-content: flex-end;
       .btn {
-          background-color: $color-primary;
-          color: $color-light;
-          border: 1px solid $color-disable;
-          border-radius: $radius / 2;
-          padding: $padding;
-          margin: $margin 0 0 $margin / 2;
-          font-weight: 700;
+        background-color: $color-primary;
+        color: $color-light;
+        border: 1px solid $color-disable;
+        border-radius: $radius / 2;
+        padding: $padding;
+        margin: $margin 0 0 $margin / 2;
+        font-weight: 700;
       }
     }
   }
