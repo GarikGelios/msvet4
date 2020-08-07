@@ -17,7 +17,7 @@ app.use('/', express.static(path.join(__dirname, '/dist'))) // указали и
 
 app.post('/', (req, res) => {
   const message = {
-    from: 'vCakeShop <transfercompanion@gmail.com>', // sender address
+    from: 'ip65.by <kopttreyd@ip65.by>', // sender address
     to: `garikgelios@gmail.com`, // list of receivers
     subject: 'Сообщение с сайта ip65.by', // Subject line
     html: content(req.body)
