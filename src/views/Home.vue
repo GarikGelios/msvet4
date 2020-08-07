@@ -2,7 +2,9 @@
   <div class="home">
     <vCarousel />
     <vBenefits />
-    <vWelcome />
+    <div class="bg-primary">
+      <vWelcome />
+    </div>
   </div>
 </template>
 

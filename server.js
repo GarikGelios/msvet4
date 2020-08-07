@@ -19,7 +19,7 @@ app.post('/', (req, res) => {
   const message = {
     from: 'vCakeShop <transfercompanion@gmail.com>', // sender address
     to: `garikgelios@gmail.com`, // list of receivers
-    subject: 'Тема сообщения', // Subject line
+    subject: 'Сообщение с сайта ip65.by', // Subject line
     html: content(req.body)
   }
   mailer(message)
