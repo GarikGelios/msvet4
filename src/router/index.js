@@ -8,7 +8,39 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      // описание meta-тегов для каждой страницы
+      title: 'ip65.by — Новогодняя иллюминация',
+      metaTags: [
+        {
+          name: 'description',
+          content:
+            'Продукция испытана в аккредитованных лабораториях и соответствует техническим регламентам Таможенного cоюза.'
+        },
+        {
+          name: 'keywords',
+          content: '3D фигуры, 2D фигуры'
+        },
+        {
+          property: 'og:title',
+          content: 'ip65.by'
+        },
+        {
+          property: 'og:description',
+          content:
+            'Приятные бонусы для наших клиентов. Доставка в любую точку страны'
+        },
+        {
+          property: 'og:type',
+          content: 'text/javascript'
+        },
+        {
+          property: 'og:image',
+          content: '/img/logo.png'
+        }
+      ]
+    }
   },
   {
     path: '/about',
@@ -23,13 +55,77 @@ const routes = [
     path: '/catalog',
     name: 'Catalog',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Catalog.vue')
+      import(/* webpackChunkName: "about" */ '../views/Catalog.vue'),
+    meta: {
+      // описание meta-тегов для каждой страницы
+      title: 'ip65.by — Наша продукция',
+      metaTags: [
+        {
+          name: 'description',
+          content:
+            'Мы следим за качеством импортной продукции от начала производства до момента погрузки и отправки.'
+        },
+        {
+          name: 'keywords',
+          content: '3D фигуры, 2D фигуры'
+        },
+        {
+          property: 'og:title',
+          content: 'ip65.by'
+        },
+        {
+          property: 'og:description',
+          content:
+            'Приятные бонусы для наших клиентов. Доставка в любую точку страны'
+        },
+        {
+          property: 'og:type',
+          content: 'text/javascript'
+        },
+        {
+          property: 'og:image',
+          content: '/img/logo.png'
+        }
+      ]
+    }
   },
   {
     path: '/contacts',
     name: 'Contacts',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Contacts.vue')
+      import(/* webpackChunkName: "about" */ '../views/Contacts.vue'),
+    meta: {
+      // описание meta-тегов для каждой страницы
+      title: 'ip65.by — Контакты',
+      metaTags: [
+        {
+          name: 'description',
+          content:
+            'Напишите нам'
+        },
+        {
+          name: 'keywords',
+          content: ''
+        },
+        {
+          property: 'og:title',
+          content: 'ip65.by'
+        },
+        {
+          property: 'og:description',
+          content:
+            'Напишите нам'
+        },
+        {
+          property: 'og:type',
+          content: 'text/javascript'
+        },
+        {
+          property: 'og:image',
+          content: '/img/logo.png'
+        }
+      ]
+    }
   }
 ]
 
@@ -37,6 +133,61 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// функция которая встроит meta-теги в нужные места сайта
+// This callback runs before every route change, including on page load.
+router.beforeEach((to, from, next) => {
+  // This goes through the matched routes from last to first, finding the closest route with a title.
+  // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
+  const nearestWithTitle = to.matched
+    .slice()
+    .reverse()
+    .find(r => r.meta && r.meta.title)
+
+  // Find the nearest route element with meta tags.
+  const nearestWithMeta = to.matched
+    .slice()
+    .reverse()
+    .find(r => r.meta && r.meta.metaTags)
+  const previousNearestWithMeta = from.matched
+    .slice()
+    .reverse()
+    .find(r => r.meta && r.meta.metaTags)
+
+  // If a route with a title was found, set the document (page) title to that value.
+  if (nearestWithTitle) {
+    document.title = nearestWithTitle.meta.title
+  } else {
+    document.title = previousNearestWithMeta.meta.title
+  }
+
+  // Remove any stale meta tags from the document using the key attribute we set below.
+  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(
+    el => el.parentNode.removeChild(el)
+  )
+
+  // Skip rendering meta tags if there are none.
+  if (!nearestWithMeta) return next()
+
+  // Turn the meta tag definitions into actual elements in the head.
+  nearestWithMeta.meta.metaTags
+    .map(tagDef => {
+      const tag = document.createElement('meta')
+
+      Object.keys(tagDef).forEach(key => {
+        tag.setAttribute(key, tagDef[key])
+      })
+
+      // We use this to track which meta tags we create, so we don't interfere with other ones.
+      tag.setAttribute('data-vue-router-controlled', '')
+
+      return tag
+    })
+    // Add the meta tags to the document head.
+    .forEach(tag => document.head.appendChild(tag))
+
+  next()
 })
 
 export default router
