@@ -7,18 +7,17 @@
           Телефон: <span><a href="tel: +80447692165">8 044 769-21-65</a></span>
         </p>
         <p>
-          email: <span><a href="mailto:boss@msvet.by">boss@msvet.by</a></span>
+          email: <span><a href="mailto:ip44ip65@mail.ru">ip44ip65@mail.ru</a></span>
         </p>
         <p>
           Адрес:
           <span
-            >223060, Минская область, Минский р-н Новодворский с/с, д. Большой
-            Тростенец, ул. Зеленая, 1а - 13а д, Большой Тростенец 223060</span
+            >220075, г. Минск, ул. Шабаны, 14а, офис 6</span
           >
         </p>
       </div>
       <div class="v-footer_wrapper_links">
-        <h4>Ссылки</h4>
+        <!-- <h4>Ссылки</h4>
         <p>
           <span><a href="msvet.by">msvet.by</a></span>
         </p>
@@ -30,7 +29,7 @@
         </p>
         <p>
           <span><a href="instagram.com">Instagram</a></span>
-        </p>
+        </p> -->
       </div>
     </div>
   </footer>

@@ -26,7 +26,7 @@
       </h1>
       <nav>
         <router-link to="/"
-          >Главная <span>Здравству друг!</span>
+          >Главная <span>Здравствуй друг!</span>
           <svg>
             <use xlink:href="@/assets/sprite.svg#home" />
           </svg>
