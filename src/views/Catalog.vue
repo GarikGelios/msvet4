@@ -2,8 +2,8 @@
   <div class="catalog">
     <h2>Каталог продукции</h2>
     <div class="catalog_categories">
-      <input type="radio" name="category" value="all" v-model="checkedCategories" id="category_all">
-      <label for="category_all" :class="{ checked: checkedCategories === 'all' }" @click="selectCategory('all')">Вся продукция</label>
+      <!-- <input type="radio" name="category" value="all" v-model="checkedCategories" id="category_all"> -->
+      <!-- <label for="category_all" :class="{ checked: checkedCategories === 'all' }" @click="selectCategory('all')">Вся продукция</label> -->
       <input
         v-for="(category, index) in productCategories"
         :key="category"
@@ -17,17 +17,18 @@
         v-for="(category, index) in productCategories"
         :key="index"
         :for="'category_' + index"
-        :class="{ checked: checkedCategories === category }" @click="selectCategory(category)"
+        :class="{ checked: checkedCategories === category }"
+        @click="selectCategory(category)"
         >{{ category }}</label
       >
     </div>
     <div class="catalog_products" v-if="this.sortedProducts.length">
       <transition-group name="list" tag="div">
-      <vCatalogItem
-        v-for="product in sortedProducts"
-        :key="product.id"
-        :product_data="product"
-      />
+        <vCatalogItem
+          v-for="product in sortedProducts"
+          :key="product.id"
+          :product_data="product"
+        />
       </transition-group>
     </div>
   </div>
@@ -44,7 +45,7 @@ export default {
   },
   data () {
     return {
-      checkedCategories: 'all',
+      checkedCategories: '',
       sortedProducts: []
     }
   },
@@ -79,18 +80,22 @@ export default {
     },
     selectCategory (selected) {
       this.sortedProducts = [...this.GET_PRODUCTS] // перед проверкой возобновляем массив
-      if (selected !== 'all') {
-        // проверяем, что если выбор вне списка категорий, то выводим все продукты
-        // если в опции что-то есть, то перебери массим сортированных продуктов
-        this.sortedProducts = this.sortedProducts.filter(function (product) {
-          return product.category === selected
-        })
-      } else {
-        return this.GET_PRODUCTS
-      }
+      // if (selected !== 'all') {
+      // проверяем, что если выбор вне списка категорий, то выводим все продукты
+      // если в опции что-то есть, то перебери массим сортированных продуктов
+      this.sortedProducts = this.sortedProducts.filter(function (product) {
+        return product.category === selected
+      })
+      //   } else {
+      //     // return this.GET_PRODUCTS
+      //     this.sortedProducts = this.sortedProducts.filter(function (product) {
+      //       return product.category === this.productCategories[0]
+      //     })
+      //   }
     }
   },
   mounted () {
+    const vm = this
     this.ACT_SPREADSHEETS_PRODUCTS_FROM_API() // как только компонент загружен, сразу вызываем api запрос на получение json из Google Таблиц
       .then(response => {
         if (response.data) {
@@ -100,7 +105,13 @@ export default {
             'Product from the DataBase loaded!'
           )
           this.adaptProducts() // и тут же превращаем в красивый массив
-          this.sortedProducts = [...this.GET_PRODUCTS]
+          this.checkedCategories = this.productCategories[0]
+          // this.sortedProducts = [...this.GET_PRODUCTS]
+          this.sortedProducts = [...this.GET_PRODUCTS].filter(function (
+            product
+          ) {
+            return product.category === vm.productCategories[0]
+          })
         }
       })
   }
@@ -135,7 +146,8 @@ export default {
     }
   }
 }
-.list-enter-active, .list-leave-active {
+.list-enter-active,
+.list-leave-active {
   transition: all 1s;
 }
 .list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {

@@ -108,14 +108,15 @@ export default {
     &.hidden {
       position: absolute;
       opacity: 0;
+      margin: auto;
     }
     &.show {
       opacity: 1;
     }
     .banner {
-      position: relative;
-      display: flex;
-      justify-content: center;
+      // position: relative;
+      // display: flex;
+      // justify-content: center;
       img {
         width: 100%;
       }

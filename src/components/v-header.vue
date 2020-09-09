@@ -61,14 +61,15 @@ export default {
 <style lang="scss">
 .v-header {
   background-color: $color-dark;
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
   &_wrapper {
     width: 100%;
     max-width: $screenwidth * 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: auto;
     h1 {
       margin: auto;
       a {
