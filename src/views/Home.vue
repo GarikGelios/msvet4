@@ -3,7 +3,7 @@
     <vCarousel />
     <vBenefits />
     <div class="bg-primary">
-      <vWelcome />
+      <!-- <vWelcome /> -->
     </div>
   </div>
 </template>
@@ -12,14 +12,14 @@
 // @ is an alias to /src
 import vCarousel from '@/components/v-carousel.vue'
 import vBenefits from '@/components/v-benefits.vue'
-import vWelcome from '@/components/v-welcome.vue'
+// import vWelcome from '@/components/v-welcome.vue'
 
 export default {
   name: 'Home',
   components: {
     vCarousel,
-    vBenefits,
-    vWelcome
+    vBenefits
+    // vWelcome
   }
 }
 </script>

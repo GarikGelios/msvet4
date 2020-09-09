@@ -128,6 +128,10 @@ export default {
       display: inline-block;
       padding: $padding;
       cursor: pointer;
+      background-color: $color-primary;
+      color: $color-light;
+      border-radius: $radius;
+      margin: $margin;
       &.checked {
         font-weight: 600;
       }

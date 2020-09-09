@@ -10,7 +10,6 @@
         >
         <input
           type="text"
-          placeholder="ООО 'Много света'"
           name="name"
           id="form_organization"
           v-model="organization"
@@ -22,7 +21,6 @@
         >
         <input
           type="text"
-          placeholder="Александр"
           name="name"
           id="form_name"
           v-model="name"
@@ -34,7 +32,6 @@
         >
         <input
           type="tel"
-          placeholder="8 044 769-21-65"
           name="phone"
           id="form_phone"
           v-model="phone"
@@ -47,7 +44,6 @@
         >
         <input
           type="email"
-          placeholder="boss@msvet.by"
           name="phone"
           id="form_email"
           v-model="email"
