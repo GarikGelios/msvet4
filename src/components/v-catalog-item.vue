@@ -24,11 +24,13 @@
       <div class="description">
         <ul>
           <li v-for="item in product_data.description.split('\n')" :key="item">
-            {{ item }}
+            <span v-html="item"></span>
           </li>
         </ul>
         <h5 v-if="product_data.price">
-          <span v-for="item in product_data.price.split('\n')" :key="item">{{ item }}</span>
+          <span v-for="item in product_data.price.split('\n')" :key="item">{{
+            item
+          }}</span>
         </h5>
       </div>
     </v-modal>
