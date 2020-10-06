@@ -31,7 +31,6 @@
           :id="'banner' + slide.id"
           name="banners"
           :value="slide.id"
-          checked
           v-model="checkedBanner"
         />
         <label :for="'banner' + slide.id"></label>
@@ -51,11 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'GET_SPREADSHEETS_PRODUCTS',
-      'GET_SPREADSHEETS_BANNERS',
-      'GET_BANNERS'
-    ]),
+    ...mapGetters(['GET_SPREADSHEETS_BANNERS', 'GET_BANNERS']),
     banners () {
       return this.GET_BANNERS
     }
@@ -78,6 +73,13 @@ export default {
         }
       })
       this.ACT_PROCESSED_SPREADSHEETS_BANNERS_TO_STORE(arr)
+    },
+    nextBanner () {
+      if (this.checkedBanner === this.banners.length - 1) {
+        this.checkedBanner = 0
+      } else {
+        this.checkedBanner += 1
+      }
     }
   },
   mounted () {
@@ -91,6 +93,7 @@ export default {
         this.adaptBanners() // и тут же превращаем в красивый массив
       }
     })
+    setInterval(this.nextBanner, 3000)
   }
 }
 </script>
