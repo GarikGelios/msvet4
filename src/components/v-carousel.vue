@@ -10,10 +10,12 @@
       }"
     >
       <div class="banner">
+        <router-link to="/catalog">
         <img
           :src="'https://drive.google.com/uc?export=view&id=' + slide.img"
           alt=""
         />
+        </router-link>
         <!-- <div class="content">
             <h4>{{ slide.title }}</h4>
             <p>{{ slide.description }}</p>
